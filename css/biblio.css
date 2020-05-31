@@ -1,0 +1,8 @@
+
+/* Mensajes de Error */
+div.error, div.excepcion {
+	color: red;	
+	border: 2px solid red;
+	padding: 10px;
+	margin: 10px;
+}
