@@ -8,6 +8,6 @@
 		
 		$_SESSION["carta"] = $carta;
 			
-		Header("Location: menu.php");
+		Header("Location: carta.php");
 	
 ?>

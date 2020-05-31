@@ -11,7 +11,6 @@
 	$acts=actualizarValMesa($conexion,$val,$numMesa);
 	if($pagado=="on"){$acts=MesaPagada($conexion,$numMesa);}
 
-	
 	cerrarConexionBD($conexion);
 	header("Location: mesa$numMesa.php");
 ?>
