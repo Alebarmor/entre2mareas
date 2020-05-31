@@ -20,5 +20,4 @@ function insertarCarta($conexion,$oid_producto,$precio,$cantidad_disponible) {
 	return $stmt;
 	
 }
-
 ?>

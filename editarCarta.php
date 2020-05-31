@@ -4,6 +4,22 @@
 	require_once("gestionBD.php");
 	require_once("gestionarProducto.php");
 	require_once("paginacion_consulta.php");
+	require_once("gestionaAdministrador.php");
+
+//Verificación de logeo
+    if (!isset($_SESSION['DNI'])) {
+   	    header('Location: needlogin.php');
+    } else { $dni = $_SESSION['DNI'];
+    }
+         
+    $conexion = crearConexionBD();
+
+//Comprobar si el encargado es administrador
+    $permiso= consultaEsAdmin($conexion,$dni);
+
+    if ($permiso!=true){
+        header('Location: accesoDenegado.php');
+    }
 	
 	if (isset($_SESSION["carta"])){
 		$carta = $_SESSION["carta"];
