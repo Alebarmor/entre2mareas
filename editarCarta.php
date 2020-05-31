@@ -81,6 +81,8 @@ tr:first-child {
 	?>
 
 	<h2>Editar Carta</h2>
+
+
 	<form method="post" >
 	<table style="width:45%">
   	<tr>
@@ -92,11 +94,11 @@ tr:first-child {
 	<?php
 		foreach($filas as $fila) {
 	echo'<tr>
-        <td><input id="OID_PRODUCTO" name="oid['.$fila['OID_PRODUCTO'].']" placeholder="$fila["OID_PRODUCTO"]" value="'.$fila["OID_PRODUCTO"].'" required/>
+        <td><input id="OID_PRODUCTO" name="oid['.$fila['OID_PRODUCTO'].']" placeholder="'.$fila["OID_PRODUCTO"].'" value="'.$fila["OID_PRODUCTO"].'" required/>
         </td>
-        <td><input name="prc['.$fila['OID_PRODUCTO'].'] min="0" step=".01" id="PRECIO" placeholder="'.$fila["PRECIO"].'" value="'.$fila["PRECIO"].'" required/>
+        <td><input name="prc['.$fila['OID_PRODUCTO'].'] min="0" id="PRECIO" placeholder="'.$fila["PRECIO"].'" value="'.$fila["PRECIO"].'" required/>
         </td>
-        <td><input name="ctd['.$fila['OID_PRODUCTO'].'] min="0" id="CANTIDAD_DISPONIBLE"  placeholder="'.$fila["CANTIDAD_DISPONIBLE"].'" value="'.$fila["CANTIDAD_DISPONIBLE"].'" required/>
+        <td><input type="number" name="ctd['.$fila['OID_PRODUCTO'].'] min="0" id="CANTIDAD_DISPONIBLE"  placeholder="'.$fila["CANTIDAD_DISPONIBLE"].'" value="'.$fila["CANTIDAD_DISPONIBLE"].'" required/>
         </td>
         <td><input type="checkbox" name="elim['.$fila['OID_PRODUCTO'].']" placeholder="-">
         </td>
@@ -105,7 +107,9 @@ tr:first-child {
  	} ?>
 </table>
 	<br>
-	<input type="submit" name="actualizar" value="Actualizar carta">
+
+	<input type="submit" name="actualizar" value="Actualizar">
+
 </form> 
 <?php
 
@@ -119,21 +123,26 @@ if(isset($_POST['actualizar'])){
     if(isset($elims)){
          if(array_key_exists($nom,$elims)){
             eliminarCarta($conexion,$nom);
-        }}
+		}}
         }
-
-        if(actualizar==true)
-        {
-            header("Location: editarCarta.php");
-        echo "FUNCIONA!";
-        }
-
-        else
-        {
-            echo "NO FUNCIONA!";
-        }
+	header("Location:editarCarta.php");
    }
 ?>
+
+
+<br><br>
+
+			<div class="paginacion">
+				<?php	
+					echo "Página";
+					for( $pagina = 1; $pagina <= $total_paginas; $pagina++ ) 
+						if ( $pagina == $pagina_seleccionada) { 	?>
+							<span class="current"><?php echo $pagina_seleccionada; ?></span>
+				<?php }	else { ?>			
+							<a href="editarCarta.php?PAG_NUM=<?php echo $pagina; ?>&PAG_TAM=<?php echo $pag_tam; ?>"><?php echo $pagina; ?></a>
+				<?php } ?>			
+			</div>
+
 
 <br><br>
    
@@ -152,29 +161,33 @@ if(isset($_POST['actualizar'])){
 	</table>
 	<input type="submit" name="sbm" value="Añadir Nuevo Pedido">
 	</form>
+
 <?php
 
-	if(isset($_POST['sbm']))
+    if(isset($_POST['sbm']))
     {
-	$nom=$_POST['n_prod'];
-	$prc=$_POST['n_precio'];
-	$ctd=$_POST['n_cant'];
+    $nom=$_POST['n_prod'];
+    $prc=$_POST['n_precio'];
+    $ctd=$_POST['n_cant'];
         insertarCarta($conexion,$nom,$prc,$ctd);
-
-        if(sbm==true)
-        {
-            header("Location: editarCarta.php");
-        }
-
-        else
-        {
-            echo "NO FUNCIONA!";
-        }
+        if (!headers_sent()) {
+        header("Location:editarCarta.php");
+    }
     }
 ?>
 
 	</fieldset>
 	</div>
+
+<br><br>
+
+	<form action="carta.php">
+
+		<input type="submit" value="Volver a la carta">
+
+	</form>
+
+
 	</body>
 
 	<?php	include_once("pie.php");

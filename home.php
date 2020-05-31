@@ -12,8 +12,6 @@
 	<body>
 		<main>
          <br>
-		<a href="login.php" style="font-size:20px;">¡Logeate ya!</a>
-
 			<p>
 				¿Eres cliente? Accede a ver la <a href="carta.php">carta</a>
 			</p>

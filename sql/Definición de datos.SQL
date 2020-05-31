@@ -113,7 +113,7 @@ numMesa number(9),
 primary key(oid_pedidos),
 foreign key(cliente_pedido) references cliente(oid_cliente),
 foreign key(numMesa) references mesas(oid_mesa),
-foreign key(producto) references carta(oid_producto),
+--foreign key(producto) references carta(oid_producto),
 foreign key(estado) references estado(oid_estado),
 foreign key(pagado) references pagado(oid_pagado));
 /

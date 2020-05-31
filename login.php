@@ -3,11 +3,14 @@
 session_start();
 
 //Elimino la sesión de DNI en el caso de que exista
-unset($_SESSION['DNI']);
 
 if (isset($_SESSION['errores'])) {
 	$errores = $_SESSION['errores'];
 }
+
+if (isset($_SESSION['DNI'])) {
+   	    header('Location: yetLogin.php');
+    }
 
 ?>
 
@@ -70,7 +73,7 @@ if (isset($_SESSION['errores'])) {
 						<div class='mayus' style='display:none'>
 							<p>El block mayus está activado</p>
 						</div><br/>
-						<input id='enviar' name='enviar' type='image' onmouseout='imgOriginal()' onmouseover='cambiaImg()' src='img/varios/entrar.png' width='50' height='50' />
+						<input id='enviar' name='enviar' type='submit' value='Login'/>
 						
 					</fieldset>
 

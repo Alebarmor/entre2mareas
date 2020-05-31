@@ -4,6 +4,7 @@
 	require_once("gestionBD.php");
 	require_once("gestionarCarta.php");
 	require_once("paginacionConsulta.php");
+	require_once("gestionarAdministrador.php");
 	
 	if (isset($_SESSION["carta"])){
 		$carta = $_SESSION["carta"];
@@ -61,7 +62,7 @@
 			<div class="up">
  			<span class="icon icon-up-open"></span>
  			</div>
- 			
+ 
 		<div class="wrapp">
 			<div class="mensaje">
 				<h1>CARTA</h1>
@@ -78,6 +79,13 @@
 			</form>
 
 		<main>
+			
+				<table style="width:30%" FRAME="void" RULES="rows">
+  				<tr>
+    					<th align="left">Plato</th>
+    					<th align="left">Precio</th>
+
+  				</tr>
 					
 			<?php
 				foreach($filas as $fila) {
@@ -86,15 +94,15 @@
 			<article class="carta">
 				<form method="post" action="controladorCarta.php">
 					<div class="fila_producto">
-						<div class="datos_producto">		
-							<input id="OID_PRODUCTO" name="OID_PRODUCTO"
-								 value="<?php echo $fila["OID_PRODUCTO"]; ?>"/>
-							<input id="PRECIO" name="PRECIO"
-								 value="<?php echo $fila["PRECIO"]; ?>"/>
-							<input id="CANTIDAD_DISPONIBLE" name="CANTIDAD_DISPONIBLE"
-								 value="<?php echo $fila["CANTIDAD_DISPONIBLE"]; ?>"/>											
+						<div class="datos_producto">	
+							<tr>	
+							<td><p><?php echo $fila["OID_PRODUCTO"]; ?></p></td>
+							<td><p><?php echo $fila["PRECIO"]; ?> €</p></td>
+							</tr>
+																	
 					</div>
 				</form>
+				
 				<?php } ?>
 
 					  	<div class="paginacion">
@@ -109,8 +117,17 @@
 						</div>
 								
 			</article>
-		</section>
-			
+		</section><br>
+		</table>
+		<br>
+	<?php if (isset($_SESSION['DNI'])) { 
+		 $permiso= consultaEsAdmin($conexion,$dni);
+    		if ($permiso!=1){ ?>
+	
+		<form action="editarCarta.php">
+			<input type="submit" value="Editar carta">
+        	</form>	
+		<?php }}?>
 	</main>
 
 <?php

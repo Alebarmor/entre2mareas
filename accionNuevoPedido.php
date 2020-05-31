@@ -29,7 +29,7 @@ include_once ("cabecera.php");
 	<body>
 	<h1>Elija la cantidad y la mesa destino</h1>
 	
-	<form action="insertarpedido.php" method="get">
+	<form action="insertarPedido.php" method="get">
   <label for="quantity"><?php echo $pedido["producto"]?>.........<?php echo $pedido["precio"]?>€</label>
   <input type="number" id="cantidad" name="cantidad" min="1" max="<?php echo $pedido["cantidadMax"]?>"> <br>
   <a>Mesa:</a> <input type="text" id="mesa" name="mesa" placeholder="Escriba número de mesa" required> 
