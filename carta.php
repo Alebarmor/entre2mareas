@@ -1,6 +1,7 @@
 <?php
 	session_start();
 
+//Requires
 	require_once("gestionBD.php");
 	require_once("gestionarCarta.php");
 	require_once("paginacionConsulta.php");
@@ -10,6 +11,7 @@
 		unset($_SESSION["carta"]);
 	}
 
+//Añadir la paginación
 	if (isset($_SESSION["paginacion"])) $paginacion = $_SESSION["paginacion"]; 
 	$pagina_seleccionada = isset($_GET["PAG_NUM"])? (int)$_GET["PAG_NUM"]:
 		(isset($paginacion)? (int)$paginacion["PAG_NUM"]: 1);
@@ -20,8 +22,10 @@
 
 	unset($_SESSION["paginacion"]);
 
+//Se crea la conexión a la BBDD
 	$conexion = crearConexionBD();
 
+//Query que devuelve los productos, cuya cantidad disponible es mayor a 1
 	$query = 'SELECT * FROM CARTA'
 		. ' WHERE (CARTA.CANTIDAD_DISPONIBLE >= 1)'
 		. ' ORDER BY OID_PRODUCTO, PRECIO';
@@ -37,6 +41,7 @@
 
 	$filas = consulta_paginada($conexion,$query,$pagina_seleccionada,$pag_tam);
 
+//Se cierra la conexión
 	cerrarConexionBD($conexion);
 
 ?>
@@ -62,6 +67,7 @@
  			<span class="icon icon-up-open"></span>
  			</div>
  			
+<!--Paginación: seleccionar el número de productos por página-->
 		<div class="wrapp">
 			<div class="mensaje">
 				<h1>CARTA</h1>
@@ -77,8 +83,8 @@
 				</div>
 			</form>
 
+<!--Productos-->
 		<main>
-					
 			<?php
 				foreach($filas as $fila) {
 			?>
@@ -96,7 +102,7 @@
 					</div>
 				</form>
 				<?php } ?>
-
+<!--Paginación: seleccionar la página-->
 					  	<div class="paginacion">
 							<?php	
 								echo "Página";

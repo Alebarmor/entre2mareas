@@ -1,6 +1,8 @@
 ﻿<?php
+//Inicio de sesiones
 	session_start();
 
+//Requires
 	require_once("gestionBD.php");
 	require_once("gestionarProducto.php");
 	require_once("paginacion_consulta.php");
@@ -10,6 +12,7 @@
 		unset($_SESSION["carta"]);
 	}
 
+//Añadir la paginación
 	if (isset($_SESSION["paginacion"])) $paginacion = $_SESSION["paginacion"]; 
 	$pagina_seleccionada = isset($_GET["PAG_NUM"])? (int)$_GET["PAG_NUM"]:
 												(isset($paginacion)? (int)$paginacion["PAG_NUM"]: 1);
@@ -20,9 +23,10 @@
 
 	unset($_SESSION["paginacion"]);
 
-
+//Se crea la conexión a la BBDD
 	$conexion = crearConexionBD();
 
+//Query que devuelve los productos
 	$query = 'SELECT * FROM CARTA ORDER BY OID_PRODUCTO, PRECIO';
 
 	$total_registros = total_consulta($conexion,$query);
@@ -35,6 +39,8 @@
 	$_SESSION["paginacion"] = $paginacion;
 
 	$filas = consulta_paginada($conexion,$query,$pagina_seleccionada,$pag_tam);
+
+//Se cierra la conexión
 	cerrarConexionBD($conexion);
 
 ?>
