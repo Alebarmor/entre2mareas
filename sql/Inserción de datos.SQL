@@ -1,40 +1,90 @@
-INSERT INTO encargado (oid_encargado,oid_dni,pass,nombre,edad,telefono) VALUES (1,'12345678D','antper','Antonio Perez',25,654389775);
--
--
--
--
+INSERT INTO encargado (oid_encargado,oid_dni,pass,nombre,edad,telefono) VALUES (1,'82228614A','antper','Antonio Perez',25,654389775);
+INSERT INTO encargado (oid_encargado,oid_dni,pass,nombre,edad,telefono) VALUES (2,'31673388L','marcrissor','Maria-Cristina Soriano',36,646328751);
+INSERT INTO encargado (oid_encargado,oid_dni,pass,nombre,edad,telefono) VALUES (3,'20931388P','virabe','Virtudes Abellan',33,648632198);
 
-INSERT INTO cliente (oid_cliente,dni_cliente,nombre,pedidos) VALUES (1,'45672344A','Juan Carlos Aragón',22);
--
--
--
--
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Coca-Cola',253);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Coca-Cola Zero',168);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Cerveza Cruzcampo',320);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Botella de agua',400);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Aquarius de Limón',179);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Aquarius de Naranja',157);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Zumo de Piña',253);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Zumo de Manzana',253);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Serranito de Pollo',162);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Serranito de Lomo',67);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Sandwich de Jamon York y Queso',153);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Sandwich de Paté',169);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Jamón Ibérico',25);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Pizza Mozarella',75);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Pizza Jamon York y Queso',48);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Pizza 4 Quesos',53);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Langostinos',136);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Gambas',154);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Sardinas',56);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Lubina',53);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Cazón',98);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Boquerones',123);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Acedías',25);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Rabo de Toro',45);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('San Jacobo',47);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Tortilla de Patatas',133);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Flamenquines',98);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Papas con Ali-Oli',58);
+INSERT INTO inventario (oid_producto,cantidad) VALUES ('Enlasadilla Rusa',45);
 
-INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES (1,'Serranito de Pollo',2,3);
--
--
--
--
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Coca-Cola',1,103);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Coca-Cola Zero',1.25,79);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Cerveza Cruzcampo',1.5,120);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Botella de agua',0.5,187);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Aquarius de Limón',1.25,70);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Aquarius de Naranja',1.25,70);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Zumo de Piña',0.75,78);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Zumo de Manzana',0.75,80);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Serranito de Pollo',1.5,35);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Serranito de Lomo',1.5,28);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Sandwich de Jamon York y Queso',2.5,68);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Sandwich de Paté',2.5,85);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Jamón Ibérico',1.75,15);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Pizza Mozarella',3.25,65);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Pizza Jamon York y Queso',3.5,40);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Pizza 4 Quesos',3.5,50);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Sardinas',4.5,28);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Cazón',5.5,80);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Boquerones',3.75,86);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Acedías',4.25,16);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('San Jacobo',2.75,30);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Tortilla de Patatas',2,88);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Flamenquines',2,65);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Papas con Ali-Oli',2.15,45);
+INSERT INTO carta (oid_producto,precio,cantidad_disponible) VALUES ('Enlasadilla Rusa',3.85,38);
 
-INSERT INTO inventario (oid_producto,cantidad) VALUES (1,'Cajas de Coca-Cola',10);
--
--
--
--
+INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion) VALUES (1,1,'Cerveza Cruzcampo',2,1,date '2019-12-2',3,2,7);
+INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion) VALUES (2,1,'Boquerones',1,1,date '2019-12-2',3.75,2,8);
+INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion) VALUES (3,1,'Acedías',1,1,date '2019-12-2',4.25,2,7);
+INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion) VALUES (4,1,'Sardinas',1,1,date '2019-12-2',4.5,2,7);
+INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion) VALUES (5,2,'Cerveza Cruzcampo',3,1,date '2020-01-17',4.5,2,8);
+INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion) VALUES (6,2,'Coca-Cola Zero',3,1,date '2020-01-17',3.75,2,9);
+INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion) VALUES (7,3,'Coca-Cola',4,1,date '2020-01-20',4,2,8);
+INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion) VALUES (8,3,'Pizza 4 Quesos',1,1,date '2020-01-20',3.5,2,6);
+INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion) VALUES (9,3,'Pizza Jamon York y Queso',1,1,date '2020-01-20',3.5,2,7);
+INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion) VALUES (10,4,'Cerveza Cruzcampo',2,1,date '2020-01-26',2.5,2,8);
+INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion) VALUES (11,4,'Papas con Ali-Oli',1,1,date '2020-01-26',2.15,2,7);
+INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion) VALUES (12,4,'Serranito de Pollo',1,1,date '2020-01-26',1.5,2,8);
 
-INSERT INTO mesas (oid_mesa,capacidad,disponibilidad,ubicacion) VALUES (1,2,1,2);
--
--
--
--
+INSERT INTO cliente (oid_cliente,dni_cliente,nombre,pedidos) VALUES (1,'18782489E','Juan Carlos Aragón',4);
+INSERT INTO cliente (oid_cliente,dni_cliente,nombre,pedidos) VALUES (2,'92859061B','Bernat de La Rosa',2);
+INSERT INTO cliente (oid_cliente,dni_cliente,nombre,pedidos) VALUES (3,'77931606Q','Luis Alfonso Betancor',3);
+INSERT INTO cliente (oid_cliente,dni_cliente,nombre,pedidos) VALUES (4,'77077502V','Marcial Miralles',3);
 
-INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,precio,pagado,fecha,valoracion) VALUES (1,1,'Croquetas',10,1,date '2019-12-2',25,1,4);
--
--
--
--
-
---------------------------------------DATOS-------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------
+INSERT INTO mesas (oid_mesa,capacidad,disponibilidad,ubicacion) VALUES (1,2,3,1);
+INSERT INTO mesas (oid_mesa,capacidad,disponibilidad,ubicacion) VALUES (2,2,1,1);
+INSERT INTO mesas (oid_mesa,capacidad,disponibilidad,ubicacion) VALUES (3,4,1,1);
+INSERT INTO mesas (oid_mesa,capacidad,disponibilidad,ubicacion) VALUES (4,4,3,2);
+INSERT INTO mesas (oid_mesa,capacidad,disponibilidad,ubicacion) VALUES (5,4,3,2);
+INSERT INTO mesas (oid_mesa,capacidad,disponibilidad,ubicacion) VALUES (6,6,2,1);
+INSERT INTO mesas (oid_mesa,capacidad,disponibilidad,ubicacion) VALUES (7,6,1,2);
+INSERT INTO mesas (oid_mesa,capacidad,disponibilidad,ubicacion) VALUES (8,6,3,2);
+INSERT INTO mesas (oid_mesa,capacidad,disponibilidad,ubicacion) VALUES (9,8,1,2);
+INSERT INTO mesas (oid_mesa,capacidad,disponibilidad,ubicacion) VALUES (10,8,2,2);
 
 COMMIT;

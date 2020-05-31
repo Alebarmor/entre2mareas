@@ -16,7 +16,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="css/biblio.css" />
-  <title>Entre Dos Mareas: ¡Se ha producido un problema!</title>
+  <title>¡Se ha producido un problema!</title>
 </head>
 <body>	
 	
