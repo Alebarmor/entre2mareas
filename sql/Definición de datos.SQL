@@ -1,9 +1,9 @@
 ----------------Eliminacion de tablas-------------------------
 
 drop table encargado;
-drop table mesas;
-drop table cliente;
 drop table pedidos;
+drop table cliente;
+drop table mesas;
 drop table carta;
 drop table inventario;
 drop table ubicacion;
@@ -17,6 +17,7 @@ drop sequence incre_oid_pedido;
 drop sequence incre_oid_cliente;
 drop sequence incre_oid_encargado;
 
+----------------------CREACIÓN DE ENUMERADOS------------------------
 create table disponibilidad(
 oid_disponibilidad int unique not null,
 tipo varchar2(20));
@@ -24,9 +25,6 @@ tipo varchar2(20));
 insert into disponibilidad values(1,'Disponible');
 insert into disponibilidad values(2,'Reservada');
 insert into disponibilidad values(3,'Ocupada');
-
-
-----------------------CREACIÓN DE ENUMERADOS------------------------
 
 create table pagado(
 oid_pagado int unique not null,
@@ -54,44 +52,10 @@ insert into ubicacion values(2,'Terraza');
 ----------------------CREACIÓN DE TABLAS------------------------
 
 create table inventario(
-oid_producto varchar2(20) not null,
+oid_producto varchar2(50) not null,
 cantidad int not null,
-check(cantidad between 0 and 150),
+check(cantidad between 0 and 450),
 primary key(oid_producto));
-/
-
-create table carta(
-oid_producto varchar2(20) not null,
-precio number(12,2) not null,
-cantidad_disponible int,
-primary key(oid_producto),
-check(precio >= 0),
-foreign key(oid_producto) references inventario(oid_producto));
-/
-
-create table pedidos(
-oid_pedidos number(9) not null,
-cliente_pedido number(9) not null,
-producto varchar2(50) not null,
-cantidad int,
-estado number(1),
-precio number (12,2) not null,
-pagado number(1),
-fecha date not null,
-valoracion int,
-primary key(oid_pedidos),
-foreign key(producto) references carta(oid_producto),
-foreign key(estado) references estado(oid_estado),
-foreign key(pagado) references pagado(oid_pagado));
-/
-
-create table cliente(
-oid_cliente number(9) not null,
-dni_cliente varchar2(9) not null,
-nombre varchar2(20) not null,
-pedidos int,
-primary key(oid_cliente),
-foreign key(pedidos) references pedidos(oid_pedidos));
 /
 
 create table mesas(
@@ -104,17 +68,53 @@ foreign key(ubicacion) references ubicacion(oid_ubicacion),
 foreign key(disponibilidad) references disponibilidad(oid_disponibilidad));
 /
 
+create table carta(
+oid_producto varchar2(50) not null,
+precio number(12,2) not null,
+cantidad_disponible int,
+primary key(oid_producto),
+check(precio >= 0),
+foreign key(oid_producto) references inventario(oid_producto));
+/
+
+
 create table encargado(
 oid_encargado number(9) not null,
 oid_dni varchar2(9) not null,
 pass varchar2(20) not null,
-nombre varchar2(20) not null,
+nombre varchar2(30) not null,
 edad int,
 telefono number(9),
 check(edad between 18 and 99),
 primary key(oid_dni));
 /
 
+create table cliente(
+oid_cliente number(9) not null,
+dni_cliente varchar2(9) not null,
+nombre varchar2(40) not null,
+pedidos int not null,
+primary key(oid_cliente));
+/
+
+create table pedidos(
+oid_pedidos number(9) not null,
+cliente_pedido number(9) not null,
+producto varchar2(50) not null,
+cantidad int,
+estado number(1),
+precio number (12,2) not null,
+pagado number(1),
+fecha date not null,
+valoracion int,
+numMesa number(9),
+primary key(oid_pedidos),
+foreign key(cliente_pedido) references cliente(oid_cliente),
+foreign key(numMesa) references mesas(oid_mesa),
+foreign key(producto) references carta(oid_producto),
+foreign key(estado) references estado(oid_estado),
+foreign key(pagado) references pagado(oid_pagado));
+/
 ---------------------------------SECUENCIAS-------------------------------
 
 create sequence incre_oid_pedido
@@ -169,37 +169,37 @@ select act_precio_x_cant(:new.producto, :new.cantidad) into :new.precio from dua
 end;
 /
 
-create or replace trigger insertar_precio
-before insert on pedidos
-for each row
-declare precio_total number(8,2);
-begin
-    select precio into precio_total
-    from pedidos 
-    where pedidos.producto=:new.producto;
-    precio_total:=precio_total* :new.cantidad;
-end;
-/
-
-create or replace trigger act_inventario
-after insert on pedidos
-for each row
-declare
-    inventario_disponible number;
-    cant int;
-    cant_carta int;
-begin 
-    select cantidad into inventario_disponible
-    from inventario
-    where oid_producto= :new.producto;
-    
-    select cantidad into cant
-    from pedidos
-    where producto= :new.producto;
-    
-    update inventario set cantidad = inventario_disponible - cant where oid_producto= :new.producto;
-end;
-/
+--create or replace trigger insertar_precio
+--before insert on pedidos
+--for each row
+--declare precio_total number(8,2);
+--begin
+--    select precio into precio_total
+--    from carta 
+--    where oid_producto=:new.producto;
+--    precio_total:=precio_total* :new.cantidad;
+--end;
+--/
+--
+--create or replace trigger act_inventario
+--after insert on pedidos
+--for each row
+--declare
+--    inventario_disponible number;
+--    cant int;
+--    cant_carta int;
+--begin 
+--    select cantidad into inventario_disponible
+--    from inventario
+--    where oid_producto= :new.producto;
+--    
+--    select cantidad into cant
+--    from pedidos
+--    where producto= :new.producto;
+--    
+--    update inventario set cantidad = inventario_disponible - cant where oid_producto= :new.producto;
+--end;
+--/
 
 --------------------------------------------FUNCTION-------------------------------------------------------
 
@@ -270,3 +270,9 @@ begin
     end if;
 end;
 /
+
+
+--SELECT PRODUCTO ,CANTIDAD, PRECIO FROM pedidos WHERE (pedidos.numMesa =2) AND (pedidos.pagado=1);
+--Update Pedidos Set valoracion=3 WHERE (pedidos.numMesa =2) AND (pedidos.pagado=1);
+COMMIT;
+
