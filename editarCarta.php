@@ -8,7 +8,7 @@
 
 //Verificación de logeo
     if (!isset($_SESSION['DNI'])) {
-   	    header('Location: needlogin.php');
+   	    header('Location: needLogin.php');
     } else { $dni = $_SESSION['DNI'];
     }
          
@@ -59,7 +59,6 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css"  href="css/estilo.css" />
-  <!--La línea anterior sirve para importar css. -->
   <title>Editar carta</title>
 </head>
 <style>
@@ -97,7 +96,7 @@ tr:first-child {
         </td>
         <td><input name="ctd['.$fila['OID_PRODUCTO'].'] min="0" id="CANTIDAD_DISPONIBLE"  placeholder="'.$fila["CANTIDAD_DISPONIBLE"].'" value="'.$fila["CANTIDAD_DISPONIBLE"].'" required/>
         </td>
-        <td><input type="checkbox" name="">
+        <td><input type="checkbox" name="elim['.$fila['OID_PRODUCTO'].']" placeholder="-">
         </td>
     </tr>';
 	
@@ -108,23 +107,30 @@ tr:first-child {
 </form> 
 <?php
 
-    if(isset($_POST['actualizar']))
-    {
+if(isset($_POST['actualizar'])){
+    if(isset($_POST['elim'])){    
+        $elims=$_POST['elim'];
+    }
         foreach ($_POST['oid'] as $nom)
-        {
+        {        
             actualizarPrecioCantidad($conexion,$nom,$_POST['prc'][$nom],$_POST['ctd'][$nom]);
+    if(isset($elims)){
+         if(array_key_exists($nom,$elims)){
+            eliminarCarta($conexion,$nom);
+        }}
         }
 
         if(actualizar==true)
         {
-            header("Location: menu.php");
+            header("Location: editarCarta.php");
+        echo "FUNCIONA!";
         }
 
         else
         {
             echo "NO FUNCIONA!";
         }
-    }
+   }
 ?>
 
 <br><br>
@@ -155,7 +161,7 @@ tr:first-child {
 
         if(sbm==true)
         {
-            header("Location: editar_carta.php");
+            header("Location: editarCarta.php");
         }
 
         else

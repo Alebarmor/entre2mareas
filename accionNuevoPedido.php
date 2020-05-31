@@ -2,7 +2,7 @@
 //Aqui se incluye la cantidad del producto del pedido
 session_start();
 require_once("gestionBD.php");
-require_once("gestionStock.php"); 
+require_once("gestionarStock.php"); 
 
 if (!isset($_SESSION['DNI'])) {
    	 header('Location: needLogin.php');
