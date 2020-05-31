@@ -5,7 +5,6 @@ session_start();
 //Elimino la sesión de DNI en el caso de que exista
 unset($_SESSION['DNI']);
 
-
 if (isset($_SESSION['errores'])) {
 	$errores = $_SESSION['errores'];
 }
@@ -27,7 +26,6 @@ if (isset($_SESSION['errores'])) {
 ?>
 
 <div class="columnas">
-	
 	
 	<section class="main">
 		<div class="wrapp">
@@ -61,20 +59,22 @@ if (isset($_SESSION['errores'])) {
 					?>
 					<br />
 					
-						<form id='formulario' action='controladorLogin.php' method='POST'>
+				<form id='formulario' action='controladorLogin.php' method='POST'>
 					
-							<fieldset class='inicio'>
-								<br>
-								<label for="usuario">Usuario</label></br>
-									<input <?php if(isset($errores) && empty($usuario)){ ?>class='userFallo'<?php }?> id='user' name='OID_DNI' type='text' value='<?php if (!empty($usuario)) { echo $usuario; }?>' /><br /></br>
-								<label for="contraseña">Contraseña</label></br>
-									<input <?php if(isset($errores) && empty($contrasenia)){ ?>class='passFallo'<?php }?> id='pass' name='PASS' onkeypress='isMayus(event);' type='password' value='<?php if (!empty($usuario)) { echo $contrasenia; }?>' /></br>
-								<div class='mayus' style='display:none'>
-									<p>El block mayus está activado</p>
-								</div><br/>
-								<input id='enviar' name='enviar' type='image' onmouseout='imgOriginal()' onmouseover='cambiaImg()' src='img/varios/entrar.png' width='50' height='50' />
-							</fieldset>
-						</form>
+					<fieldset class='inicio'>
+					<br>
+						<label for="usuario">Usuario</label></br>
+						<input <?php if(isset($errores) && empty($usuario)){ ?>class='userFallo'<?php }?> id='user' name='OID_DNI' type='text' value='<?php if (!empty($usuario)) { echo $usuario; }?>' /><br /></br>
+						<label for="contraseña">Contraseña</label></br>
+						<input <?php if(isset($errores) && empty($contrasenia)){ ?>class='passFallo'<?php }?> id='pass' name='PASS' onkeypress='isMayus(event);' type='password' value='<?php if (!empty($usuario)) { echo $contrasenia; }?>' /></br>
+						<div class='mayus' style='display:none'>
+							<p>El block mayus está activado</p>
+						</div><br/>
+						<input id='enviar' name='enviar' type='image' onmouseout='imgOriginal()' onmouseover='cambiaImg()' src='img/varios/entrar.png' width='50' height='50' />
+						
+					</fieldset>
+
+				</form>
 					
 			</div>
 			</div>
