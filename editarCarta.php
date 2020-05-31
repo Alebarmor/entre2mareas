@@ -3,8 +3,8 @@
 
 	require_once("gestionBD.php");
 	require_once("gestionarProducto.php");
-	require_once("paginacion_consulta.php");
-	require_once("gestionaAdministrador.php");
+	require_once("paginacionConsulta.php");
+	require_once("gestionarAdministrador.php");
 
 //Verificación de logeo
     if (!isset($_SESSION['DNI'])) {
@@ -17,7 +17,7 @@
 //Comprobar si el encargado es administrador
     $permiso= consultaEsAdmin($conexion,$dni);
 
-    if ($permiso!=true){
+    if ($permiso!=1){
         header('Location: accesoDenegado.php');
     }
 	
@@ -25,6 +25,8 @@
 		$carta = $_SESSION["carta"];
 		unset($_SESSION["carta"]);
 	}
+
+//Paginación
 
 	if (isset($_SESSION["paginacion"])) $paginacion = $_SESSION["paginacion"]; 
 	$pagina_seleccionada = isset($_GET["PAG_NUM"])? (int)$_GET["PAG_NUM"]:

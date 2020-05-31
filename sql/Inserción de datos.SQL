@@ -1,6 +1,6 @@
-INSERT INTO encargado (oid_encargado,oid_dni,pass,nombre,edad,telefono) VALUES (1,'82228614A','antper','Antonio Perez',25,654389775);
-INSERT INTO encargado (oid_encargado,oid_dni,pass,nombre,edad,telefono) VALUES (2,'31673388L','marcrissor','Maria-Cristina Soriano',36,646328751);
-INSERT INTO encargado (oid_encargado,oid_dni,pass,nombre,edad,telefono) VALUES (3,'20931388P','virabe','Virtudes Abellan',33,648632198);
+INSERT INTO encargado (oid_encargado,oid_dni,pass,is_admin,nombre,edad,telefono) VALUES (1,'82228614A','antper',1,'Antonio Perez',25,654389775);
+INSERT INTO encargado (oid_encargado,oid_dni,pass,is_admin,nombre,edad,telefono) VALUES (2,'31673388L','marcrissor',1,'Maria-Cristina Soriano',36,646328751);
+INSERT INTO encargado (oid_encargado,oid_dni,pass,is_admin,nombre,edad,telefono) VALUES (3,'20931388P','virabe',0,'Virtudes Abellan',33,648632198);
 
 INSERT INTO mesas (oid_mesa,capacidad,disponibilidad,ubicacion) VALUES (1,2,3,1);
 INSERT INTO mesas (oid_mesa,capacidad,disponibilidad,ubicacion) VALUES (2,2,1,1);

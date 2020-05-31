@@ -82,10 +82,12 @@ create table encargado(
 oid_encargado number(9) not null,
 oid_dni varchar2(9) not null,
 pass varchar2(20) not null,
+is_admin int not null,
 nombre varchar2(30) not null,
 edad int,
 telefono number(9),
 check(edad between 18 and 99),
+check(is_admin between 0 and 1),
 primary key(oid_dni));
 /
 

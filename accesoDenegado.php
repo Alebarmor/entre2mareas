@@ -15,6 +15,7 @@
 			<p>
 				Usted no tiene acceso a esta sección
 			</p>
+        <p>Volver a <a href="home.php">inicio</a>.</p>
 		</main>
 
 		<?php
