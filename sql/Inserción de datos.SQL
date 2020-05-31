@@ -70,7 +70,7 @@ INSERT INTO cliente (oid_cliente,dni_cliente,nombre,pedidos) VALUES (4,'77077502
 
 INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion,numMesa) VALUES (1,1,'Cerveza Cruzcampo',2,1,date '2020-6-2',3,1,4,1);
 INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion,numMesa) VALUES (2,1,'Boquerones',1,1,date '2020-6-2',3.75,1,5,1);
-INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion,numMesa) VALUES (3,1,'Acedías',1,1,date '2020-6-2',4.25,1,4,1);
+INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion,numMesa) VALUES (3,1,'Acedias',1,1,date '2020-6-2',4.5,1,4,1);
 INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion,numMesa) VALUES (4,1,'Sardinas',1,1,date '2020-6-2',4.5,1,4,2);
 INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion,numMesa) VALUES (5,2,'Cerveza Cruzcampo',3,1,date '2020-6-2',4.5,1,5,2);
 INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion,numMesa) VALUES (6,2,'Coca-Cola Zero',3,1,date '2020-6-2',3.75,1,5,2);
@@ -80,23 +80,5 @@ INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,p
 INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion,numMesa) VALUES (10,4,'Cerveza Cruzcampo',2,1,date '2020-6-2',2.5,1,4,4);
 INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion,numMesa) VALUES (11,4,'Papas con Ali-Oli',1,1,date '2020-6-2',2.15,1,4,4);
 INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion,numMesa) VALUES (12,4,'Serranito de Pollo',1,1,date '2020-6-2',1.5,1,5,4);
-
-
---INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,pagado,valoracion,numMesa) VALUES (1,1,'Cerveza Cruzcampo',2,1,date '2020-6-2',1,4,1);
---INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,precio,pagado,valoracion,numMesa) VALUES (2,1,'Boquerones',1,1,date '2020-6-2',3.75,1,5,1);
---INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,pagado,valoracion,numMesa) VALUES (3,1,'Acedías',1,1,date '2020-6-2',1,4,1);
---INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,pagado,valoracion,numMesa) VALUES (4,1,'Sardinas',1,1,date '2020-6-2',1,4,2);
---INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,pagado,valoracion,numMesa) VALUES (5,2,'Cerveza Cruzcampo',3,1,date '2020-6-2',1,5,2);
---INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,pagado,valoracion,numMesa) VALUES (6,2,'Coca-Cola Zero',3,1,date '2020-6-2',1,5,2);
---INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,pagado,valoracion,numMesa) VALUES (7,3,'Coca-Cola',4,1,date '2020-6-2',1,5,3);
---INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,pagado,valoracion,numMesa) VALUES (8,3,'Pizza 4 Quesos',1,1,date '2020-6-2',1,3,3);
---INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,pagado,valoracion,numMesa) VALUES (9,3,'Pizza Jamon York y Queso',1,1,date '2020-6-2',1,4,3);
---INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,pagado,valoracion,numMesa) VALUES (10,4,'Cerveza Cruzcampo',2,1,date '2020-6-2',1,4,4);
---INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,pagado,valoracion,numMesa) VALUES (11,4,'Papas con Ali-Oli',1,1,date '2020-6-2',1,4,4);
---INSERT INTO pedidos (oid_pedidos,cliente_pedido,producto,cantidad,estado,fecha,pagado,valoracion,numMesa) VALUES (12,4,'Serranito de Pollo',1,1,date '2020-6-2',1,5,4);
-
-SELECT * FROM CARTA ORDER BY OID_PRODUCTO, PRECIO;
-UPDATE CARTA SET PRECIO = 332, CANTIDAD_DISPONIBLE = :cantidad_disponible WHERE OID_PRODUCTO = :oid_producto;
-	
 
 COMMIT;
